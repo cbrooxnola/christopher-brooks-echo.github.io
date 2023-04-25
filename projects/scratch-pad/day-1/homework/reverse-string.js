@@ -21,7 +21,14 @@
 
 function reverseString(input) {
     // YOUR CODE GOES BELOW HERE //
-    
+    //create empty array to collect output
+let array = [];
+    //reverse loop through input string and place current value into output array
+for (let i = input.length; i >= 0; i--){
+  array.push(input[i]);
+}
+    //return output array as a string
+    return array.join('');
     
     
     
