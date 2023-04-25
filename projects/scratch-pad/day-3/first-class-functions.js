@@ -14,8 +14,11 @@
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
     //test whether value is greater than input(base)
-    
-    //return boolean result
+    return function(value){
+        if (value > base){
+            return true;
+        } else {return false};
+    }//return boolean result
     
     
     // YOUR CODE ABOVE HERE //
@@ -28,7 +31,12 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+   //test whether value is less than input(base)
+   return function(value){
+    if (value < base){
+        return true;
+    } else {return false};
+}//return boolean result  
     
     
     
@@ -42,8 +50,12 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
+    //test whether first character of string matches input character by returning a function that performs the test
+   return function(string){
+    if (string[0].toLowerCase() === startsWith.toLowerCase()){
+        return true;
+    } else {return false;}
+   } //return boolean result
     
     
     // YOUR CODE ABOVE HERE //
@@ -56,7 +68,12 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
+     //test whether last character of string matches input character by returning a function that performs the test
+     return function(string){
+        if (string[string.length - 1].toLowerCase() === endsWith.toLowerCase()){
+            return true;
+        } else {return false;}
+       } //return boolean result 
     
     
     
@@ -72,10 +89,15 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+    //assign output array
+    let newStrings = [];
+    //loop over input array, invoking function on each element
+    for (let i = 0; i < strings.length; i++){
+        newStrings[i] = modify(strings[i]);
+        //add modified elements to output array
+    }
+    //return output array
+    return newStrings;
     // YOUR CODE ABOVE HERE //
 }
 
@@ -90,8 +112,14 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
-    
+    //loop over strings array, passing each element thru test function
+for (let i = 0; i < strings.length; i++){
+    if (test(strings[i]) === false){
+        return false;//if a single one fails, you're done
+    }
+}
+    //if all pass, return true
+    return true;   
     
     
     // YOUR CODE ABOVE HERE //
