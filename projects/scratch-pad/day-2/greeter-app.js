@@ -35,7 +35,16 @@
 
 function greeter(hour) {
     // YOUR CODE BELOW HERE //
-    
+    //based on input (time), log greeting to say Good: Morning, Afternoon, Evening, or Night(!)
+    if (hour > 21){
+        console.log("Good Night!");
+    } else if (hour > 16){
+        console.log("Good Evening!");
+    } else if (hour > 11){
+        console.log("Good Afternoon!");
+    } else {
+        console.log("Good Morning!");
+    }
     
     
     
