@@ -23,7 +23,23 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
+    //create output array
+let arr = [];
+    //determine which input number is greater
+    //create separate loops based on greater number
+if (start < end){
+    for (let i = start; i <= end; i++){
+        arr.push(i);
+    }                                   //add incrementing/decrementing integers to the output array
+} else if (start > end){
+        for (let i = end; i >= start; i--){
+            arr.push(i);
+        }
+    }
+return arr;
     
+
+    //return output array
     
     
     
