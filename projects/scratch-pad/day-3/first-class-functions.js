@@ -13,8 +13,9 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
+    //test whether value is greater than input(base)
     
-    
+    //return boolean result
     
     
     // YOUR CODE ABOVE HERE //

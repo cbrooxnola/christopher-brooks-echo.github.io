@@ -14,8 +14,12 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
-    
-    
+    //return boolean value based on if value is an array
+    if (Array.isArray(value)){
+        return true;
+    } else {
+        return false;
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -31,8 +35,22 @@ function isArray(value) {
  */
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
-    
+    //return false if value is not an object
+    if (typeof value !== 'object'){
+        return false;
+    //return false if value is null
+     } else if (value === null){
+        return false;
+    //return false if value is an array
+     } else if (Array.isArray(value)){
+        return false;
+    //return false if value is a date
+     } else if (value instanceof Date){
+        return false;
+    //return true if value is an object intended as a collection
+     } else {
+        return true;
+     }
     
     
     // YOUR CODE ABOVE HERE //
@@ -46,9 +64,19 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+   //return false if value is not an object
+   if (typeof value !== 'object'){
+    return false;
+//return false if value is null
+ } else if (value === null){
+    return false;
+//return false if value is a date
+ } else if (value instanceof Date){
+    return false;
+//return true if value is an object intended as a collection
+ } else {
+    return true;
+ } 
     
     // YOUR CODE ABOVE HERE //
 }
@@ -74,9 +102,18 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
+    //return datatype of input value, if it's not an object
+    if (typeof value !== 'object'){
+        return typeof value;
+    } else if (Array.isArray(value)){
+        return 'array';
+    } else if (value instanceof Date){
+        return "date";
+    } else if (value === null){
+        return 'null';
+    } else {
+        return 'object';
+    }
     
     // YOUR CODE ABOVE HERE //
 }
