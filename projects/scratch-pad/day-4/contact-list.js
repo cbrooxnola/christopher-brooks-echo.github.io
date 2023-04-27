@@ -69,25 +69,30 @@ function makeContactList() {
            },
         removeContact: function(contactObj){
             for (let i = 0; i < contacts.length; i++){
-                if (contactObj === contacts[i]){
-                    contacts.slice(contacts[i]);
+                if (contactObj.id === contacts[i].id){
+                    contacts.splice(i, 1);
+                    return;
                 }
             }
+            return;
         },
         printAllContactNames: function(){
             for (let i = 0; i < contacts.length; i++){
                 if (i < contacts.length - 1) {
-                    console.log(contacts[i].nameFirst + ' ' + contacts[i].nameLast \n);
-            }
+                    console.log(contacts[i].nameFirst + ' ' + contacts[i].nameLast, '\n');
+            } else {
+                console.log(contacts[i].nameFirst + ' ' + contacts[i].nameLast);
+        }
         }  
+        return;
     }
-}
+    }
 
 
 
 
 // YOUR CODE GOES ABOVE HERE //
-
+}
 
 
 
