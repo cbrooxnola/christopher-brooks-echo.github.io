@@ -77,14 +77,16 @@ function makeContactList() {
             return;
         },
         printAllContactNames: function(){
-            for (let i = 0; i < contacts.length; i++){
-                if (i < contacts.length - 1) {
-                    console.log(contacts[i].nameFirst + ' ' + contacts[i].nameLast, '\n');
-            } else {
-                console.log(contacts[i].nameFirst + ' ' + contacts[i].nameLast);
+            let contactList = '';
+            for (let i = 0; i < contacts.length; i++){//loop through contacts array
+                if (i < contacts.length - 1) {//add formatted full name plus line break, until 
+                    contactList += contacts[i].nameFirst + ' ' + contacts[i].nameLast + '\n';
+            } else {//last entry, then just add formatted full name
+                contactList += contacts[i].nameFirst + ' ' + contacts[i].nameLast;
         }
         }  
-        return;
+        return contactList;
+        
     }
     }
 
