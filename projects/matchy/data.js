@@ -90,12 +90,13 @@ console.log(animals.length);
 //////////////////////////////////////////////////////////////////////
 //choosing array for friends list because it's complex and ordered
 var friends = [];
-var chek = function getRandom(animals){
+function getRandom(){
   var rando = Math.floor(Math.random() * animals.length);
   return rando;
 }
-friends.push(animals[chek]);
+friends.push(animals[getRandom()].name);
 console.log(friends);
+animals[0].friends = friends;
 
 /**
  * Nice work! You're done Part 1. Pat yourself on the back and
