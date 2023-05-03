@@ -6,12 +6,15 @@
 *In other words, we can say that an operator operates the operands
 *
 *Types of Operators
-* 1. Assignment
-* 2. Arithmetic
-* 3. Comparison
-* 4. Logical
-* 5. Unary
-* 6. Ternary
+* 1. Assignment - assigns a value to its left operand, based on its right operand.
+* 2. Arithmetic - takes two numerical values as operands and returns a single numerical value.
+* 3. Comparison - compares its operands and returns a logical value based on if the comparison is true
+* 4. Logical - Logical operators are typically used with Boolean values, and return a Boolean value. 
+*              However, the && and || operators actually return the value of one of the specified operands, 
+*              so if these operators are used with non-Boolean values, they may return a non-Boolean value. 
+* 5. Unary - only has one operand, and resolves to a desgnated value or absence of value
+* 6. Ternary - meaning a 3-part expression: if the expression to the left of the ? is truthy, the expression to the 
+*              left of the colon is executed; if it is falsey, the expression to the right of the colon is executed.
 *
 *1. Assignment
 *   var x = 5 - assigns variable x equal to a value of 5
@@ -45,13 +48,10 @@
 
 *
 *  5. Unary 
-*    + and - : these attempt to convert a value to a number if it is not already one; a value that does resolves
-*    as falsey will return a '0' or 'NaN'
-*    console.log(+'');//output = 0
-*    console.log(+true);//output = 1;
-*    console.log(+'random word');//output = NaN
+*    delete object.property => removes specified property from object
+*    typeOf value => returns the datatype of the value
 *
 * 6. Ternary 
-*    meaning a 3-part expression: if the expression to the left of the ? is truthy, the expression to the 
-*    left of the colon is executed; if it is falsey, the expression to the right of the colon is executed.
-*    x > y ? return true : return false
+*    10 > 5 ? return true : return false => returns true
+*    5 > 10 ? return true : return false => returns false
+*/
