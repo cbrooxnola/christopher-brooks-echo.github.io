@@ -14,8 +14,8 @@ function triangles(num) {
 // fizzBuzz ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function fizzBuzz(num) {
-  for (let i = 1; i <=num; i++){
+function fizzBuzz(num1, num2) {
+  for (let i = num1; i <= num2; i++){
     if ((i % 3 === 0) && (i % 5 === 0)){
       console.log("fizzbuzz");
     } else if (i % 3 === 0){
@@ -32,8 +32,20 @@ function fizzBuzz(num) {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard() {
-
+function drawChessboard(x) {
+  let board = [];//create array to store rows of strings
+  for (let i = 0; i < x; i++){//create loop to run x number of times
+    let row = '';
+    for (let j = 0; j < x; j++){
+      if ((j + i) % 2 === 0){
+        row += ' ';
+      } else {
+        row += '#';
+      }
+    }
+    board.push(row);
+ }
+ console.log(board.join('\n') + '\n');//return array converted to strings
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -108,7 +108,7 @@ function maybeNoises(object) {
 //////////////////////////////////////////////////////////////////////
 
 function hasWord(string, word) {
-
+ return string.includes(word);
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -116,7 +116,8 @@ function hasWord(string, word) {
 //////////////////////////////////////////////////////////////////////
 
 function addFriend (name, object) {
-
+ object.friends.push(name);
+ return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -124,7 +125,10 @@ function addFriend (name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function isFriend(name, object) {
-
+  if (object.hasOwnProperty('friends')){
+    return object.friends.includes(name);
+}
+return false;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -132,7 +136,17 @@ function isFriend(name, object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
+    var enemies = [];
+    for (let i = 0; i < array.length; i++){
+        if (array[i].name !== name && !array[i].friends.includes(name)){
+            enemies.push(array[i].name);
+        }
+    }
+    return enemies;
 
+        
+    
+  
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -140,7 +154,8 @@ function nonFriends(name, array) {
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+  object[key] = value;
+  return object;
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -148,7 +163,11 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
+ for (let i = 0; i < array.length; i++){
+    if (object.hasOwnProperty(array[i])){
+        delete object[array[i]];
+    }
+ }
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -156,6 +175,13 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
+  let newArray = array.reduce(function (acc, cur){
+    if (acc.includes(cur) === false)
+        acc.push(cur);
+        return acc;
+    
+    }, []);
+  return newArray;
 
 }
 
