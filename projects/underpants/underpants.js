@@ -218,7 +218,16 @@ _.unique = function(array){
 * Extra Credit:
 *   use _.each in your implementation
 */
+_.filter = function(array, func){
+    let newArray = [];
+    for (let i = 0; i < array.length; i++){
+        if (func(array[i], i, array) === true){
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
 
+}
 
 /** _.reject
 * Arguments:
@@ -232,7 +241,15 @@ _.unique = function(array){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
-
+_.reject = function(array, func){
+    let newArray = [];
+    for (let i = 0 ; i < array.length; i++){
+        if (func(array[i], i, array) === false){
+            newArray.push(array[i]);
+        }
+    }
+    return newArray;
+}
 
 /** _.partition
 * Arguments:
@@ -252,7 +269,19 @@ _.unique = function(array){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+_.partition = function(array, func){
+    let truArray = [];
+    let falArray = [];
+    for (let i = 0; i < array.length; i++){
+        if (func(array[i], i, array)){
+            truArray.push(array[i]);
+        } else {
+            falArray.push(array[i]);
+        }
+    }
+    return [truArray, falArray];
 
+}
 
 /** _.map
 * Arguments:
@@ -269,7 +298,19 @@ _.unique = function(array){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(coll, func){
+    let newArray = [];
+    if (Array.isArray(coll)){
+        for (let i = 0; i < coll.length; i++){
+        newArray.push(func(coll[i], i, coll));
+        }
+    } else {
+        for (var key in coll){
+            newArray.push(func(coll[key], key, coll));
+        }
+    }
+    return newArray;
+}
 
 /** _.pluck
 * Arguments:
@@ -281,7 +322,11 @@ _.unique = function(array){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-
+_.pluck = function(array, property){
+    return _.map(array, function(prop){
+        return prop[property];
+    });
+}
 
 /** _.every
 * Arguments:
@@ -303,7 +348,42 @@ _.unique = function(array){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+_.every = function(coll, func){
+    let ret = true;
+    if (!func){
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (!coll[i]){
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            for (var key in coll){
+                if (!coll[key]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    } else {
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (func(coll[i], i, coll) === false){
+                    ret = false;
+            };
+        }
+        return ret;
+    } else {
+        for (var key in coll){
+            if (func(coll[key], key, coll) === false){
+                ret = false;
+            }
+        }
+        return ret;
+    };
+}
+}
 
 /** _.some
 * Arguments:
@@ -325,7 +405,42 @@ _.unique = function(array){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function(coll, func){
+    let ret = false;
+    if (!func){
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (coll[i]){
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            for (var key in coll){
+                if (coll[key]){
+                    return true;
+                }
+            }
+            return false;
+        }
+    } else {
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (func(coll[i], i, coll) === true){
+                    ret = true;
+            };
+        }
+        return ret;
+    } else {
+        for (var key in coll){
+            if (func(coll[key], key, coll) === true){
+                ret = true;
+            }
+        }
+        return ret;
+    };
+}
+}
 
 /** _.reduce
 * Arguments:
@@ -345,7 +460,22 @@ _.unique = function(array){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function(array, func, seed){
+    let acc;
+    if (seed === undefined){
+        acc = array[0];
+        for (let i = 1; i < array.length; i++){
+            acc = func(acc, array[i], i, array);
+        }
+        
+    } else {
+        acc = seed;
+        for (let i = 0; i < array.length; i++){
+            acc = (func(acc, array[i], i, array));
+        }
+    }
+    return acc;
+}
 
 /** _.extend
 * Arguments:
@@ -361,6 +491,11 @@ _.unique = function(array){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(obj1, obj2, ...objects){
+    Object.assign(obj1, obj2, ...objects);
+    return obj1;
+}
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
