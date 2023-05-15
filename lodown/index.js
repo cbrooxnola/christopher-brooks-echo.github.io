@@ -139,3 +139,137 @@ _.pluck = function(array, property){
 }
 
 module.exports.pluck = pluck;
+
+/**
+ * every: designed to take in a collection and a function, determine if collection is an
+ *        object or an array, and return true if every property or element returns true when 
+ *        passed thru the function; false if not. 
+ * @param: the function takes in two parameters, a collection and a function
+ * @return: the function returns a boolean value of true or false
+ */
+
+_.every = function(coll, func){
+    let ret = true;
+    if (!func){
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (!coll[i]){
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            for (var key in coll){
+                if (!coll[key]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    } else {
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (func(coll[i], i, coll) === false){
+                    ret = false;
+            };
+        }
+        return ret;
+    } else {
+        for (var key in coll){
+            if (func(coll[key], key, coll) === false){
+                ret = false;
+            }
+        }
+        return ret;
+    };
+}
+}
+module.exports.every = every;
+
+/**
+ * some: designed to take in a collection and a function, determine if collection is an
+ *        object or an array, and return true if ANY property or element returns true when 
+ *        passed thru the function; false if not. 
+ * @param: the function takes in two parameters, a collection and a function
+ * @return: the function returns a boolean value of true or false
+ */
+
+_.some = function(coll, func){
+    let ret = false;
+    if (!func){
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (coll[i]){
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            for (var key in coll){
+                if (coll[key]){
+                    return true;
+                }
+            }
+            return false;
+        }
+    } else {
+        if (Array.isArray(coll)){
+            for (let i = 0; i < coll.length; i++){
+                if (func(coll[i], i, coll) === true){
+                    ret = true;
+            };
+        }
+        return ret;
+    } else {
+        for (var key in coll){
+            if (func(coll[key], key, coll) === true){
+                ret = true;
+            }
+        }
+        return ret;
+    };
+}
+}
+module.exports.some = some;
+
+/**
+ * reduce: designed to take in three parameters, an array, a function, and a seed value.  Reduce passes each element 
+ *         of the input array thru the input function, each time adjusting an accumulating value that begins with the seed
+ *         value.  If no seed value is given, the default seed value is the first index of the input array.
+ * @param: the function takes in three parameters, an array, a function, and a seed.
+ * @return: the function returns an accumulated value resulting from each input array element being passed thru 
+ *          the function.
+ */
+_.reduce = function(array, func, seed){
+    let acc;
+    if (seed === undefined){
+        acc = array[0];
+        for (let i = 1; i < array.length; i++){
+            acc = func(acc, array[i], i, array);
+        }
+        
+    } else {
+        acc = seed;
+        for (let i = 0; i < array.length; i++){
+            acc = (func(acc, array[i], i, array));
+        }
+    }
+    return acc;
+}
+module.exports.reduce = reduce;
+
+/**
+ * extend: designed to take in any number of objects as parameters, copying the contents of each of them 
+ *         into the first one, in order.
+ * @param: function takes in an unlimited number of, but at least two, parameters - all objects
+ * @return: function returns a copy of the first object passed in, which now also contains the contents of all other
+ *          objects passed in.  NOTE: in the event of duplicate properties among copied objects, returned object
+ *          copy will retain the value of the last one passed in only. 
+ */
+
+_.extend = function(obj1, obj2, ...objects){
+    Object.assign(obj1, obj2, ...objects);
+    return obj1;
+}
+module.exports.extend = extend;
+
