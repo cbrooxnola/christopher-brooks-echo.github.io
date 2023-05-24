@@ -41,8 +41,27 @@ function every(array, test) {
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(string) {
+  //create holding arrays for characters
+  let ltr = [];
+  let rtl = [];
+  //loop through string to determine if each character is a valid character and, if 
+  //so, if it is ltr or rtl in nature
+  for (let i = 0; i < string.length; i++){
+    let letter = characterScript(string.charCodeAt(i));
+    if (letter !== null){
+      if (letter.direction === 'ltr'){
+        ltr.push(letter);
+      } else {
+        rtl.push(letter);
+      }
+    }
+  }//test length of each array and return the greater
+  if (ltr.length > rtl.length){
+    return 'ltr';
+  } else {
+    return 'rtl';
+  }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
