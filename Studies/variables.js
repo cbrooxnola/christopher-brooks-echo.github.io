@@ -40,8 +40,24 @@
 *
 * 2. var, let & const
 *                       var age = 35;//declares and initializes a globally-scoped variable that can be redeclared or reassigned
+ *                        age = 36;//variable can be reassigned
+ *                        var age = 37;//variable can be redeclared
 *                       let age = 35;//declares and initializes a block-scoped variable that can be reassigned, but not redeclared
-*                       const age = 35;//declares and initializes a block-scoped variable that cannot be redeclared or reassigned.
+*                         age = 36;// variable can be reassigned
+*                         let age = 37;//ERROR - variable cannot be redeclared  
+*                       const age = 35;//declares and initializes a block-scoped variable that cannot be redeclared or reassigned
+*                         age = 36;//ERROR - variable cannot be reassigned
+*  
+*                       const age = 37;//ERROR - variable cannot be redeclared
+* BLOCK SCOPING OF LET & CONST
+*    if (10 > 9){
+*       var x = true;
+*       let y = true;
+ *      const z = true;
+*     }
+*   console.log(x); prints 'true' to the console;
+*   console.log(y); ERROR - y is not defined
+*   console.log(z); ERROR - z is declared but its value is never read
 *
 * 3. Hoisting
 *       //CODE AS WRITTEN:

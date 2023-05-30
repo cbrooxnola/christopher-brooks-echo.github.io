@@ -43,12 +43,13 @@
  *     by default process that as the datatype 'number'.  However, if a programmer creates an object, they must use 
  *     the curly braces {} to tell javascript - hey, this is an object.
  * 
+ * ////COPY BY VALUE/COPY BY REFERENCE////
  * 12. Primitive values are immutable, meaning their value cannot be changed, only copied by producing a new value/
  *    new variable.  In the same sense, primitive values are passed into functions BY COPY, and any manipulation
  *    of them performed within the function applies within the function only, and does not affect the original value
- *    of the data.
+ *    of the data.  When var 1 copies var 2 by value, both variables point to the value of var 2 at that time.
  *    Complex values, on the other hand, are passed into functions BY REFERENCE, and their outcome within the function
- *    can alter their existing value.
+ *    can alter their existing value.  when var 1 copies var 2 by reference, var 1 points to var 2. 
  * 
  * Example: 
  *    let x = 5;

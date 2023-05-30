@@ -8,8 +8,14 @@
  * 
  * 1. While, For, and For...In Loops
  *    A while loop executes a specified statement for as long as its "while" condition is met.
- *    A for loop will iterate through an array according to a specific condition,
- *       usually some sort of count that increments or decrements, with an assigned stopping point. 
+ * 
+ *    A for loop will do the same, but we specify a count variable withthree conditions: 
+ *       - a starting point - the initial value of the counting variable,
+ *       - a stopping point - what the value of the counting variable will be when the loop stops,
+ *       - and an update - a rate at which to increment or decrement the counting variable, per loop,
+ *         to progress it from the starting point to the stopping point.
+ *      It creates a counting sequence we can use to loop through an array.  
+ * 
  *    A for..in loop is used to access every property within an object one at a time.
  * 
  * 2. Looping forward and backward - while loops and for loops can be set up to run forward or 
